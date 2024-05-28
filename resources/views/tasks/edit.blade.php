@@ -54,8 +54,8 @@
                 alert('Task ID not provided');
                 window.location.href = '{{ route("dashboard") }}';
             }
-            fetchOptions('/api/categories', '.category');
-            fetchOptions('/api/priorities', '.priority');
+            // fetchOptions('/api/categories', '.category');
+            // fetchOptions('/api/priorities', '.priority');
             // Fetch categories and priorities for select options
             function fetchOptions(url, className) {
                 fetch(url)
@@ -90,23 +90,26 @@
                         div.className = 'category-priority mt-4';
                         div.innerHTML = `
                             <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline category">
+                                <option value="${cp.category.id}">${cp.category.name}</option>
                                 <option value="">Select Category</option>
                             </select>
                             <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline priority">
+                                <option value="${cp.priority.id}">${cp.priority.name}</option>
                                 <option value="">Select Priority</option>
                             </select>
                         `;
                         wrapper.appendChild(div);
-                        const categorySelect = div.querySelector('.category');
-                        const prioritySelect = div.querySelector('.priority');
-                        categorySelect.value = cp.category.id;
-                        prioritySelect.value = cp.priority.id;
-                        fetchOptions('/api/categories', '.category');
-                        fetchOptions('/api/priorities', '.priority');   
+                        // const categorySelect = div.querySelector('.category');
+                        // const prioritySelect = div.querySelector('.priority');
+                        // categorySelect.value = cp.category.id;
+                        // prioritySelect.value = cp.priority.id;
+                        // fetchOptions('/api/categories', '.category');
+                        // fetchOptions('/api/priorities', '.priority');   
                     });
                 })
                 .catch(error => console.error('Error fetching task data:', error));
-
+                fetchOptions('/api/categories', '.category');
+                fetchOptions('/api/priorities', '.priority'); 
             // Add another category and priority
             document.getElementById('addCategoryPriorityBtn').addEventListener('click', function () {
                 const wrapper = document.getElementById('categoryPriorityWrapper');
@@ -121,8 +124,8 @@
                     </select>
                 `;
                 wrapper.appendChild(div);
-                fetchOptions('/api/categories', '.category');
-                fetchOptions('/api/priorities', '.priority');
+                fetchOptions('/api/categories', '.category',);
+                fetchOptions('/api/priorities', '.priority',);
             });
 
             // Handle form submission
