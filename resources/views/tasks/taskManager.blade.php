@@ -29,10 +29,10 @@
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="category">Category and Priority</label>
                 <div id="categoryPriorityWrapper">
                     <div class="category-priority">
-                        <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline category" required>
+                        <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline category">
                             <option value="">Select Category</option>
                         </select>
-                        <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline priority" required>
+                        <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline priority">
                             <option value="">Select Priority</option>
                         </select>
                     </div>
@@ -148,7 +148,7 @@
                 .then(response => response.json())
                 .then(data => {
                     console.log(data);
-                    console.log("the text I got to be writtedn")
+                    window.location.href = '{{ route("dashboard") }}';
                 })
                 .catch(error => {
                     console.error('Error:', error);

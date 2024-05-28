@@ -21,10 +21,16 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::get('/taskManager', function () {
-    return view('taskManager');
-});
+Route::get('/tasks/taskManager', function () {
+    return view('tasks/taskManager', ['user' => Auth::user()]);
+})->middleware(['auth']);
 
+
+Route::get('/tasks/{taskId}/edit', function ($taskId) {
+    // dd($taskId);
+    // $task = Tasks::findOrFail($taskId);
+    return view('tasks.edit', ['taskId' => $taskId, 'user' => Auth::user()]);
+})->middleware(['auth']);
 
 
 require __DIR__.'/auth.php';

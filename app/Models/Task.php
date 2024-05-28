@@ -17,4 +17,9 @@ class Task extends Model
     {
         return $this->belongsToMany(Category::class, 'category_task')->withPivot('priority_id');
     }
+
+    public function categoryTasks()
+    {
+        return $this->hasMany(CategoryTask::class, 'task_id');
+    }
 }
